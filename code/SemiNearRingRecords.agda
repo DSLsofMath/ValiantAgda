@@ -5,8 +5,9 @@ import Relation.Binary.EqReasoning as EqReasoning
 import Relation.Binary.On using (isEquivalence)
 import Algebra.Structures using (module IsCommutativeMonoid; IsCommutativeMonoid)
 open import Relation.Binary    using (module IsEquivalence; IsEquivalence; _Preserves₂_⟶_⟶_ ; Setoid)
-open import Preliminaries using (Rel; UniqueSolution; LowerBound)
 open import Data.Product renaming (_,_ to _,,_) -- just to avoid clash with other commas
+
+open import Preliminaries using (Rel; UniqueSolution; LowerBound)
 
 module SemiNearRingRecords where
 
