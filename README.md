@@ -15,15 +15,18 @@ http://www.cse.chalmers.se/~patrikj/talks/IFIP2.1ZeegseJansson_ParParseAlgebra.o
 
 ## Paper
 
-* bibtex entry (to be completed)
+* bibtex entry
 
 ```
 @article{bernardy_certified_2015,
   author =       {Jean-Philippe Bernardy and Patrik Jansson},
+  title =        {Certified Context-Free Parsing: A formalisation of Valiant's Algorithm in Agda},
   journal =      {Logical Methods in Computer Science},
-  note =         {\HREF{Accepted 2015-12-22, available
+  note =         {\HREF{Published 2016-06-14, available
                   at arxiv.org/abs/1601.07724}{http://arxiv.org/abs/1601.07724}},
-  title =        {Certified Context-Free Parsing},
-  year =         2015,
+  doi =          {10.2168/LMCS-12(2:6)2016},
+  volume =       12,
+  issue =        2,
+  year =         2016,
 }
 ```
