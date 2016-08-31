@@ -18,9 +18,10 @@ http://www.cse.chalmers.se/~patrikj/talks/IFIP2.1ZeegseJansson_ParParseAlgebra.o
 * bibtex entry
 
 ```
-@article{bernardy_certified_2015,
+@article{BernardyJansson2016ValiantAgda,
   author =       {Jean-Philippe Bernardy and Patrik Jansson},
-  title =        {Certified Context-Free Parsing: A formalisation of Valiant's Algorithm in Agda},
+  title =        {Certified Context-Free Parsing: A formalisation of
+                  {Valiant}'s Algorithm in {Agda}},
   journal =      {Logical Methods in Computer Science},
   note =         {\HREF{Published 2016-06-14, available
                   at arxiv.org/abs/1601.07724}{http://arxiv.org/abs/1601.07724}},
@@ -30,3 +31,7 @@ http://www.cse.chalmers.se/~patrikj/talks/IFIP2.1ZeegseJansson_ParParseAlgebra.o
   year =         2016,
 }
 ```
+
+## Abstract
+
+Valiant (1975) has developed an algorithm for recognition of context free languages. As of today, it remains the algorithm with the best asymptotic complexity for this purpose. In this paper, we present an algebraic specification, implementation, and proof of correctness of a generalisation of Valiant’s algorithm. The generalisation can be used for recognition, parsing or generic calculation of the transitive closure of upper triangular matrices. The proof is certified by the Agda proof assistant. The certification is representative of state-of-the-art methods for specification and proofs in proof assistants based on type-theory. As such, this paper can be read as a tutorial for the Agda system.
