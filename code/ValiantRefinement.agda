@@ -1,9 +1,9 @@
 open import Relation.Binary.PropositionalEquality using (_≡_; refl)
-import Relation.Binary.EqReasoning as EqReasoning
-open import Algebra.FunctionProperties using (LeftZero; RightZero)
+import Relation.Binary.Reasoning.Setoid as EqReasoning
+open import Algebra.Definitions using (LeftZero; RightZero)
 open import Algebra.Structures using (module IsCommutativeMonoid;
                                              IsCommutativeMonoid)
-open import Data.Product
+open import Data.Product hiding (_<*>_)
   -- just to avoid clash with other commas
 open import Data.Unit
 import OrderLemmas
@@ -62,6 +62,7 @@ Square csnr = CSNR where
 
   record S : Set where                            -- \structure{4.1}{Square matrix}
     constructor ⟨_,_,_,_⟩
+    eta-equality
     field
       s00  : s;  s01  : s
       s10  : s;  s11  : s
@@ -69,6 +70,7 @@ Square csnr = CSNR where
 
   record U : Set where                            -- \structure{4.2}{Upper triangular matrix}
     constructor ⟨_,_,•,_⟩
+    eta-equality
     field
       uu00 : u;  us01  : s;
                  uu11  : u
@@ -178,6 +180,8 @@ Square csnr = CSNR where
   commS : (x y : S) →  x +S y ≃S y +S x
   commS  ⟨ x00 , x01 , x10 , x11 ⟩ ⟨ y00 , y01 , y10 , y11 ⟩ =  (comms x00 y00 , comms x01 y01 ,
                                                                  comms x10 y10 , comms x11 y11 )
+  identityʳS : (x : S) →  x +S zerS  ≃S  x
+  identityʳS x = transS (commS x zerS) (identityˡS x)
 
   idemS : (x : S) → x +S x  ≃S  x
   idemS ⟨ x00 , x01 , x10 , x11 ⟩ = ( idem x00 , idem x01 , idem x10 , idem x11 )
@@ -192,12 +196,18 @@ Square csnr = CSNR where
 
   isCommMonS : IsCommutativeMonoid _≃S_ _+S_ zerS
   isCommMonS = record {
-     isSemigroup = record {
-        isEquivalence  = record { refl = reflS; sym = symS; trans = transS };
-        assoc          = assocS;
-        ∙-cong         = _<+S>_ };
-     identityˡ   = identityˡS;
-     comm        = commS }
+     comm     = commS;
+     isMonoid = record {
+        isSemigroup = record {
+          isMagma = record {
+            isEquivalence  = record { refl = reflS; sym = symS; trans = transS };
+            ∙-cong         = _<+S>_
+            };
+          assoc          = assocS
+          };
+       identity   = identityˡS , identityʳS
+       }
+     }
 
   SNR : SemiNearRingRecords.SemiNearRing
   SNR = record {

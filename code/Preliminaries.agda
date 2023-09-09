@@ -1,6 +1,6 @@
 open import Data.Product renaming (_,_ to _,,_) -- just to avoid clash with other commas
-open import Algebra.Structures           using (IsSemigroup)
-open import Algebra.FunctionProperties   using (LeftIdentity; Commutative)
+open import Algebra.Structures    using (IsSemigroup)
+open import Algebra.Definitions   using (LeftIdentity; Commutative)
 
 module Preliminaries where
 

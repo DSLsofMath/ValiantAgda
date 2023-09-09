@@ -1,12 +1,12 @@
-import Algebra.FunctionProperties using (LeftZero; RightZero; _DistributesOverˡ_;_DistributesOverʳ_; Idempotent)
+import Algebra.Definitions using (LeftZero; RightZero; _DistributesOverˡ_;_DistributesOverʳ_; Idempotent)
 import Function using (_on_)
 import Level
-import Relation.Binary.EqReasoning as EqReasoning
-import Relation.Binary.On using (isEquivalence)
+import Relation.Binary.Reasoning.Setoid as EqReasoning
+import Relation.Binary.Construct.On using (isEquivalence)
 import Algebra.Structures using (module IsCommutativeMonoid; IsCommutativeMonoid)
 open import Relation.Binary    using (module IsEquivalence; IsEquivalence; _Preserves₂_⟶_⟶_ ; Setoid)
 open import Data.Product renaming (_,_ to _,,_) -- just to avoid clash with other commas
-
+                         hiding (_<*>_)
 open import Preliminaries using (Rel; UniqueSolution; LowerBound)
 
 module SemiNearRingRecords where
@@ -19,8 +19,8 @@ record SemiNearRing : Set₁ where                  -- \structure{1}{|SemiNearRi
      _+s_  : s → s → s
      _*s_  : s → s → s
 
-  open Algebra.Structures                using (IsCommutativeMonoid)
-  open Algebra.FunctionProperties _≃s_   using (LeftZero; RightZero)
+  open Algebra.Structures         using (IsCommutativeMonoid)
+  open Algebra.Definitions _≃s_   using (LeftZero; RightZero)
 
   field                                           -- \structure{1.2}{Commutative monoid |(+,0)|}
     isCommMon : IsCommutativeMonoid _≃s_ _+s_ zers
@@ -29,7 +29,7 @@ record SemiNearRing : Set₁ where                  -- \structure{1}{|SemiNearRi
     zeroʳ  : RightZero  zers  _*s_   -- expands to |∀ x →  (x *s zers)  ≃s  zers|
     _<*>_  : ∀ {x y u v} →  (x ≃s y)  →  (u ≃s v)  →  (x *s u   ≃s   y *s v)
 
-  open Algebra.FunctionProperties _≃s_
+  open Algebra.Definitions _≃s_
     using (Idempotent; _DistributesOverˡ_; _DistributesOverʳ_)
 
   field                                           -- \structure{1.3}{Distributive, idempotent, \ldots}
@@ -63,7 +63,7 @@ record SemiNearRing : Set₁ where                  -- \structure{1}{|SemiNearRi
                       isEquivalence  = isEquivs }
 
   open IsEquivalence isEquivs public
-    hiding   (reflexive) renaming (refl to refls ; sym to syms ; trans to transs)
+    hiding   (reflexive; isPartialEquivalence) renaming (refl to refls ; sym to syms ; trans to transs)
 
   LowerBounds  = LowerBound  _≤s_                 -- \structure{1.6}{Lower bounds}
 
@@ -89,7 +89,7 @@ record SemiNearRing2 : Set₁ where                 -- \structure{2}{|SemiNearRi
   infix   4  _≃u_;  infixl  6  _+u_;  infixl  7  _*u_ _u*s_ _s*u_
 
   uSetoid : Setoid Level.zero Level.zero
-  uSetoid = record { isEquivalence = Relation.Binary.On.isEquivalence u2s isEquivs }
+  uSetoid = record { isEquivalence = Relation.Binary.Construct.On.isEquivalence u2s isEquivs }
 
   _≤u_  : u → u → Set
   _≤u_  = _≤s_ Function.on u2s

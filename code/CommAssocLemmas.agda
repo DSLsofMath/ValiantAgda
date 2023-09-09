@@ -9,10 +9,10 @@ module CommAssocLemmas (A : Set) (_≈_ : A -> A -> Set) (_+_ : A -> A -> A) (ze
   SA = record {Carrier = A; _≈_ = _≈_; isEquivalence = IsCommutativeMonoid.isEquivalence isCommMon}
 
   --  open Relation.Binary.Setoid SA
-  open import Algebra.FunctionProperties public
+  open import Algebra.Definitions public
   open IsCommutativeMonoid isCommMon public renaming (∙-cong to _<+>_)
  
-  open import Relation.Binary.EqReasoning SA
+  open import Relation.Binary.Reasoning.Setoid SA
   lemmaCommAssoc00 : ∀ a b c d ->  (a + ((b + c) + (d + zer))) ≈ ((a + c) + (b + d))
   lemmaCommAssoc00 a b c d = 
     begin

@@ -1,0 +1,12 @@
+* 2023-09-08: Updating the code to current Agda + stdlib
++ There were a number of (arguably minor) changes needed:
++ Three renamings / moves:
+  + Relation/Binary/On.agda -> Relation/Binary/Construct/On.agda
+  + Relation.Binary.EqReasoning -> Relation.Binary.Reasoning.Setoid
+  + Algebra.FunctionProperties -> Algebra.Definitions
++ records need new modifier
+    eta-equality
+  to allow for pattern-matching (with eta-equality) on the constructor.
++ IsCommutativeMonoid record rationalised in the library (Error: "The
+  record type IsCommutativeMonoid does not have the fields
+  isSemigroup, identityˡ but it would have the field isMonoid ...".)

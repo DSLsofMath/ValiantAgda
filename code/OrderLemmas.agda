@@ -1,4 +1,4 @@
-import Relation.Binary.EqReasoning as EqReasoning
+import Relation.Binary.Reasoning.Setoid as EqReasoning
 open import SemiNearRingRecords
 module OrderLemmas (snro : SemiNearRing) where
 
