@@ -68,13 +68,13 @@ Some notes which may come in handy.
   construct U=U_{m+1} and S=S_{m+1} by describing how to assemble the
   smaller pieces. Notice that the m+1-matrices are twice as wide and
   high, thus we can fit in two by two smaller blocks as follows:
-
+```
   U = u s
         u
 
   S = s s
       s s
-
+```
 + We also include a simple inclusion u2s : u -> s
   U2S (u11 s12
            u22) = ((u2s u11)  s12
@@ -113,7 +113,7 @@ Some notes which may come in handy.
   just the same as y. Thus in the "base case" the function V is
   basically the identity:
 
-  V_1(_,y,_) = y
+  `V_1(_,y,_) = y`
 
   Still a bit "magic" but just follows from the types and properties
   required.
