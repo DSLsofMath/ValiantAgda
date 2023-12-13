@@ -16,3 +16,6 @@ Certified Context-Free Parsing: A formalisation of Valiant's Algorithm in Agda
 
 + 2023-09-08: updated version check with Agda 2.6.3 and
   `agda-stdlib-1.7.3`. See changes.org for details.
+
++ 2023-12-13: Checking if the code works with the new
+  agda-stdlib-2.0 - tried adding a CI script.
