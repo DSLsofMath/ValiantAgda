@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest # or macOS-latest, or windows-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: patrikja/setup-agda@v2.1.0
+      - uses: patrikja/setup-agda
         with:
           agda-version: '2.6.4'
           agda-stdlib-version: '2.0'
